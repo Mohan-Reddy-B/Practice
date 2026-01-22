@@ -1,0 +1,13 @@
+f=open('f1.txt','r+')
+print(f)
+print(f.read())
+f.seek(0)
+print(f.read(2))
+print(f.readline())
+print(f.readlines())
+f.write("\n used to write a single line\n")
+l1=["write\n","multiple\n","lines\n"]
+f.writelines(l1)
+f.seek(0)
+print(f.readline())
+f.close()
