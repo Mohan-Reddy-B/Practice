@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ashford — Menswear</title>
+    <meta
+      name="description"
+      content="Ashford is a small menswear house. Wool coats, quiet shirts, and knits cut for the city."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="#top">Ashford</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#collection">The edit</a>
+        <a href="#film">Film</a>
+        <a href="#atelier">Atelier</a>
+      </nav>
+      <button class="bag-button" type="button" id="open-bag" aria-haspopup="dialog">
+        Bag <span id="bag-count">0</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Autumn edit</p>
+          <h1>Clothes cut for the city.</h1>
+          <p class="lead">
+            Ashford is a small menswear house. Wool coats, quiet shirts, and knits
+            made to be worn hard and kept longer.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-solid" href="#collection">Shop the edit</a>
+            <a class="button button-ghost" href="#film">Play the film</a>
+          </div>
+        </div>
+        <figure class="hero-figure">
+          <img
+            src="media/ashford-hero-coat.jpg"
+            alt="A man in the charcoal Charter Coat on a quiet street at dusk"
+          />
+        </figure>
+      </section>
+
+      <section class="collection" id="collection">
+        <div class="section-heading">
+          <p class="eyebrow">Five pieces</p>
+          <h2>The edit</h2>
+        </div>
+        <div class="product-grid" id="product-grid"></div>
+      </section>
+
+      <section class="film" id="film">
+        <div class="section-heading section-heading-light">
+          <p class="eyebrow">Campaign</p>
+          <h2>The autumn film</h2>
+          <p class="section-note">
+            A short film for the shop, cut from the lookbook. Widescreen for the site,
+            vertical for stories.
+          </p>
+        </div>
+        <div class="film-layout">
+          <figure class="player player-wide">
+            <video
+              id="wide-film"
+              controls
+              playsinline
+              preload="metadata"
+              poster="media/ashford-hero-coat.jpg"
+            >
+              <source src="film/ashford-film.mp4" type="video/mp4" />
+              <track
+                kind="captions"
+                src="film/ashford-film.vtt"
+                srclang="en"
+                label="English"
+                default
+              />
+            </video>
+            <figcaption>
+              Widescreen film
+              <a href="film/ashford-film.mp4" download>Download</a>
+            </figcaption>
+          </figure>
+          <figure class="player player-reel">
+            <video
+              id="reel-film"
+              controls
+              playsinline
+              preload="metadata"
+              poster="media/ashford-oxford.jpg"
+            >
+              <source src="film/ashford-reel.mp4" type="video/mp4" />
+              <track
+                kind="captions"
+                src="film/ashford-reel.vtt"
+                srclang="en"
+                label="English"
+                default
+              />
+            </video>
+            <figcaption>
+              Stories reel
+              <a href="film/ashford-reel.mp4" download>Download</a>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="atelier" id="atelier">
+        <div class="atelier-copy">
+          <p class="eyebrow">The cutting room</p>
+          <h2>Made in small runs.</h2>
+          <p>
+            Each piece is cut in a short run, lined where it matters, and finished
+            with spare buttons in the pocket. The coat is half-canvassed. The shirt
+            is an oxford with a soft collar. Nothing here is seasonal filler.
+          </p>
+          <p>
+            This page is the studio shop: choose a size, add it to the bag, and
+            keep a note of the edit. Prices are in rupees. Nothing is charged.
+          </p>
+        </div>
+        <figure>
+          <img
+            src="media/ashford-atelier.jpg"
+            alt="The Ashford atelier, with coats on oak rails and shirts folded on a stone table"
+          />
+        </figure>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Ashford menswear</span>
+      <span>Studio preview · Prices in INR</span>
+    </footer>
+
+    <div class="drawer" id="product-drawer" hidden>
+      <div class="drawer-backdrop" data-close="product"></div>
+      <div
+        class="drawer-panel product-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="product-title"
+      >
+        <button class="close" type="button" data-close="product" aria-label="Close">
+          Close
+        </button>
+        <img id="product-image" alt="" />
+        <div class="product-detail">
+          <p class="eyebrow" id="product-fabric"></p>
+          <h2 id="product-title"></h2>
+          <p class="price" id="product-price"></p>
+          <p id="product-note"></p>
+          <fieldset class="sizes">
+            <legend>Size</legend>
+            <div class="size-row" id="size-row"></div>
+          </fieldset>
+          <p class="form-error" id="size-error" hidden>Choose a size.</p>
+          <button class="button button-solid" type="button" id="add-to-bag">
+            Add to bag
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer" id="bag-drawer" hidden>
+      <div class="drawer-backdrop" data-close="bag"></div>
+      <div
+        class="drawer-panel bag-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="bag-title"
+      >
+        <button class="close" type="button" data-close="bag" aria-label="Close bag">
+          Close
+        </button>
+        <h2 id="bag-title">Your bag</h2>
+        <div id="bag-lines"></div>
+        <p class="bag-total" id="bag-total"></p>
+        <button class="button button-solid" type="button" id="reserve">
+          Keep this note
+        </button>
+        <p class="reserve-note" id="reserve-note" hidden>
+          Saved on this browser. Nothing is charged.
+        </p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
